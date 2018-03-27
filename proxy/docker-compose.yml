@@ -34,7 +34,7 @@ services:
       - datastore
     environment:
       - ENABLE_IPV6=true
-      - DEFAULT_HOST=your.domain,www.your.domain
+      - DEFAULT_HOST=remotedev.groovehq.com
     labels:
       - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
 
@@ -72,21 +72,22 @@ services:
       - ./web/log:/var/log/nginx
     environment:
       - ALLOW_DOMAIN=192.168.0.3,192.168.1.5  # Basic authentication is not required when accessing from the specified IP address.
-      - VIRTUAL_HOST=your.domain,www.your.domain
-      - LETSENCRYPT_HOST=your.domain,www.your.domain
-      - LETSENCRYPT_EMAIL=letsencrypt-admin@your.domain
+      - VIRTUAL_HOST=remotedev.groovehq.com
+      - LETSENCRYPT_HOST=remotedev.groovehq.com
+      - LETSENCRYPT_EMAIL=letsencrypt-admin@remotedev.groovehq.com
       # - LETSENCRYPT_TEST=true
     expose:
       - "80"
+      - "443"
 
   whoami:
     image: jwilder/whoami
     container_name: whoami
     environment:
       - ALLOW_DOMAIN=192.168.0.3
-      - VIRTUAL_HOST=whoami.your.domain
-      - LETSENCRYPT_HOST=whoami.your.domain
-      - LETSENCRYPT_EMAIL=letsencrypt-admin@your.domain
+      - VIRTUAL_HOST=whoami.remotedev.groovehq.com
+      - LETSENCRYPT_HOST=whoami.remotedev.groovehq.com
+      - LETSENCRYPT_EMAIL=letsencrypt-admin@remotedev.groovehq.com
       # - LETSENCRYPT_TEST=true
 
 networks:
