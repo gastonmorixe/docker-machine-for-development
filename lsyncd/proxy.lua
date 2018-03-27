@@ -9,7 +9,7 @@ settings {
 sync {
   default.rsync,
   source = "/Users/work1/Projects/groove/stack",  -- change this path
-  target = 'docker-user@remotework.eastus.cloudapp.azure.com:/home/docker-user/stack',  -- change this path
+  target = 'root@104.131.21.43:/root/stack',  -- change this path
   delay  = 0,
   rsync  = {
     binary   = '/usr/local/bin/rsync',
@@ -17,7 +17,7 @@ sync {
     links    = true,
     update   = true,
     verbose  = false,
-    compress = false,
+    compress = true,
     rsh = '/usr/bin/ssh -p 22 -i /Users/work1/.ssh/remotework'
   },
   exclude = {
