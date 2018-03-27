@@ -8,8 +8,8 @@ settings {
 
 sync {
   default.rsync,
-  source = "/path/to/proxy",  -- change this path
-  target = 'login_name@your.server:/path/to/proxy',  -- change this path
+  source = "/Users/work1/Projects/groove/stack",  -- change this path
+  target = 'docker-user@remotework.eastus.cloudapp.azure.com:/home/docker-user/stack',  -- change this path
   delay  = 0,
   rsync  = {
     binary   = '/usr/local/bin/rsync',
@@ -17,13 +17,15 @@ sync {
     links    = true,
     update   = true,
     verbose  = false,
-    compress = true,
-    rsh = '/usr/bin/ssh -p 22 -i /path/to/.ssh/key'
+    compress = false,
+    rsh = '/usr/bin/ssh -p 22 -i /Users/work1/.ssh/remotework'
   },
   exclude = {
     '.DS_Store',
     '*.bak',
     '*.backup',
+    'node_modules/',
+    'release_*/',
     '.git/',
     'log/',
     'tmp/',
